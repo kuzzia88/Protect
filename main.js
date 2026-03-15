@@ -39,7 +39,7 @@ function createWindow() {
   Menu.setApplicationMenu(null);
   win.loadFile('index.html')
 
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
 }
 
 ipcMain.on('save-image', async (event, { fileName, buffer }) => {
