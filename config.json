@@ -1,0 +1,9 @@
+{
+  "config": {
+    "local": true,
+    "background": "default",
+    "font_color": "",
+    "video_protection": false,
+    "discord_protection": false
+  }
+}

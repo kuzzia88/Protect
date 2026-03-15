@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' href='src/css/title-bar.css'>
+    <link rel='stylesheet' href='src/css/styles.css'>
+    <link rel='stylesheet' href='src/css/require.css'>
+    <link rel='stylesheet' href='src/css/msg.css'>
+    <link rel='icon' type='image/png' href='icon.ico'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Protect</title>
+</head>
+<body>
+    <div class='root'>
+        <div class='message-container' id='messageContainer'></div>
+
+        <div class='title-bar'>
+            <div class='title'>Protect</div>
+            <div class='window-controls'>
+                <div class='control-btn minimize' onclick='window.electron.minimize()'></div>
+                <div class='control-btn close' onclick='window.electron.close()'></div>
+            </div>
+        </div>
+        <header><button id='confbtn' onclick='cfg.showModal()'><i class='bx bx-cog'></i></button><button type='button' id='showBtn'><i class='bx bx-low-vision'></i></button><label>Protect</label><button type='button' id='blockBtn'><i class='bx bx-lock-alt'></i></button><button type='button' id='addAccountBtn' onclick='addAccountDg.showModal()'><i class='bx bx-user-plus' ></i></button></header>
+
+        <div id='setupModal'  class='master-password-modals' style='display: none;'>
+            <label style='font-size: 36px;'>Set Master Password</label>
+            <p>This password is needed for the security of your data</p>
+            <input type='password' id='newMasterPassword' placeholder='master password' class='mpassword'>
+            <input type='password' id='confirmMasterPassword' placeholder='repeat password' class='mpassword'>
+            <button id='saveMasterPassword' class='psw-modal-btn'>Save</button>
+            <p id='setupError' style='color: red;'></p>
+        </div>
+
+        <div id='master-password-check' class='master-password-modals' style='display: none;'>
+            <label style='font-size: 36px;'>Type u'r master password</label>
+            <p>Everything will be fine =)</p>
+            <input type='password' id='masterPassword' placeholder='master password' class='mpassword'>
+            <button id='MasterPasswordBtn' class='psw-modal-btn'>Confirm</button>
+            <p id='setupErrorS' style='color: red;'></p>
+        </div>
+
+        <div id='blurDg' class='master-password-modals' style='display: none;'>
+            <label style='font-size: 36px;'>Recording program detected!</label>
+            <button type='button' class='psw-modal-btn' id='showContainerBtn'>Show</button>
+        </div>
+
+        <div id='container'></div>
+
+        <dialog id='cfg'>
+            <label style='font-size: 36px;'>Config</label>
+            <canvas class='white-line'></canvas>
+            <div class='cfgDiv'>
+                <label>
+                    Local
+                    <label class='toggle-switch' id='local'>
+                        <input type='checkbox' id='local-cb'>
+                        <span class='slider'></span>
+                    </label>
+                </label>
+                <div id='serverDg'></div>
+                <div class='compact-file-input'>
+                    <input type='file' id='compactFile' accept='.png,.jpg,.jpeg'>
+                    <label for='compactFile'><i class='bx bx-folder'></i> Choose background image</label>
+                    <span id='compactFileName' class='file-name'></span>
+                </div>
+                <button class='reset-btn reset-bg-btn'>Default</button>
+                <label>
+                    Font color
+                    <input class='font-slider' type="color">
+                </label>
+                <button class='reset-btn reset-font-color-btn'>Default font</button>
+                <label>
+                    Video protection
+                    <label class='toggle-switch' id='video_protection'>
+                        <input type='checkbox' id='video_protection-cb'>
+                        <span class='slider'></span>
+                    </label>
+                </label>
+                <label>
+                    Discord protection
+                    <label class='toggle-switch' id='discord_protection'>
+                        <input type='checkbox' id='discord_protection-cb'>
+                        <span class='slider'></span>
+                    </label>
+                </label>
+
+                <button type='button' class='ImportExportBtn' id='importBtn' onclick='importDg.showModal()'>Import</button>
+                <button type='button' class='ImportExportBtn' id='exportBtn' onclick='exportDg.showModal()'>Export</button>
+            </div>
+        </dialog>
+
+        <dialog id='importDg' class='ImportExportDg'>
+            <label style='font-size: 32px;'>Import</label>
+            <canvas class='white-line'></canvas>
+            <div class='file-input-container'>
+                <input type='file' id='fileInput' class='file-input' accept='.json,.db'>
+                <label for='fileInput' class='file-input-label'>
+                    <div class='file-input-icon'><i class='bx bx-folder' ></i></div>
+                    <div class='file-input-text'>Choose file</div>
+                    <div class='file-input-subtext'>or drag it here</div>
+                    <div id='fileName' class='file-input-name'></div>
+                </label>
+            </div>
+        </dialog>
+
+        <dialog id='exportDg' class='ImportExportDg'>
+            <label style='font-size: 32px;'>Export</label>
+            <canvas class='white-line'></canvas>
+            <div class='ImportExportDiv'>
+                <button class='extImExBtn' id='exportJson'>.json</button>
+                <button class='extImExBtn' id='exportDb'>.db</button>
+            </div>
+        </dialog>
+        
+        <dialog id='addAccountDg'>
+            <label style='font-size: 32px;'>Add account</label>
+
+            <canvas class='white-line'></canvas>
+            <form id='accountAddForm'>
+                <label>Name</label>
+                <input type='text' placeholder='name' class='addAccountInput' id='nameInput' required>
+                <label>Url</label>
+                <input type='text' placeholder='https://example.com' class='addAccountInput' id='urlInput'>
+                
+                <label>Login</label> 
+                <input type='text' placeholder='login or email' class='addAccountInput' id='loginInput' required>
+                
+                <label>Password</label>
+                <input type='text' placeholder='password' class='addAccountInput' id='passwordInput' required> 
+                
+                <label>Comment</label>
+                <input type='text' placeholder='comment' class='addAccountInput' id='commentInput'>
+                
+                <label>Master password</label>
+                <input type='password' placeholder='master password' class='addAccountInput' id='masterInput'>
+
+                <button type='submit' id='addNewAccountBtn'>Submit</button>
+
+                <p id='account-errors' style='color: red;'></p>
+            </form>
+        </dialog>
+    </div>
+    <script src='src/js/cryptoUtils.js' defer></script>
+    <script src='src/js/utils.js' defer></script>
+    <script src='src/js/req.js' defer></script>
+    <script src='src/js/renderer.js' defer></script>
+    <script src='src/js/config.js' defer></script>
+    <script src='src/js/title-bar.js' defer></script>
+</body>
+</html>

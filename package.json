@@ -1,0 +1,113 @@
+{
+  "name": "protect",
+  "version": "0.1.0",
+  "main": "main.js",
+  "scripts": {
+    "obfuscate": "javascript-obfuscator main.js --output dist/main-obfuscated.js --compact true --control-flow-flattening true --control-flow-flattening-threshold 0.75 --dead-code-injection true --dead-code-injection-threshold 0.4 --debug-protection true --debug-protection-interval 5000 --disable-console-output true --identifier-names-generator hexadecimal --log false --numbers-to-expressions true --rename-globals false --rename-properties false --self-defending true --simplify true --split-strings true --split-strings-chunk-length 10 --string-array true --string-array-encoding rc4 --string-array-threshold 0.75 --string-array-wrappers-count 2 --string-array-wrappers-chained-calls true --string-array-wrappers-parameters-max-count 2 --string-array-wrappers-type variable --transform-object-keys true --unicode-escape-sequence true",
+    "build:obfuscated": "npm run obfuscate && electron-builder --win --dir",
+    "package:obfuscated": "npm run obfuscate && electron-packager . protect --out=dist-obfuscated --platform=win32 --arch=x64 --asar --overwrite --icon=assets/icon.ico",
+    "package": "electron-packager . protect --out=dist --asar --overwrite --icon=assets/icon",
+    "package:win": "electron-packager . protect --platform=win32 --arch=x64 --out=dist --asar --overwrite --icon=assets/icon.ico",
+    "package:mac": "electron-packager . protect --platform=darwin --arch=x64 --out=dist --asar --overwrite --icon=assets/icon.icns",
+    "package:linux": "electron-packager . protect --platform=linux --arch=x64 --out=dist --asar --overwrite --icon=assets/icon.png",
+    "package:all": "npm run package:win && npm run package:mac && npm run package:linux",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
+    "build:all": "electron-builder -wml",
+    "dist": "npm run build",
+    "start": "electron .",
+    "start:obfuscated": "npm run obfuscate && electron dist/main-obfuscated.js",
+    "postinstall": "electron-builder install-app-deps",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "electron",
+    "protect"
+  ],
+  "author": {
+    "name": "kuzzia.",
+    "email": "your-email@example.com"
+  },
+  "license": "MIT",
+  "description": "Protection application",
+  "devDependencies": {
+    "electron": "^37.2.3",
+    "electron-builder": "^26.0.12",
+    "electron-packager": "^17.1.2",
+    "javascript-obfuscator": "^4.1.1",
+    "webpack-obfuscator": "^3.5.1"
+  },
+  "dependencies": {
+    "ps-list": "^8.1.1",
+    "sqlite3": "^5.1.7"
+  },
+  "build": {
+    "appId": "com.kuzzia.protect",
+    "productName": "Protect",
+    "copyright": "Copyright © 2024 kuzzia.",
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "main.js",
+      "package.json",
+      "**/*",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!**/node_modules/*.d.ts",
+      "!**/node_modules/.bin",
+      "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}",
+      "!.editorconfig",
+      "!**/._*",
+      "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,.gitignore,.gitattributes}",
+      "!**/{__pycache__,thumbs.db,.flowconfig,.idea,.vs,.nyc_output}",
+      "!**/{appveyor.yml,.travis.yml,circle.yml}",
+      "!**/{npm-debug.log,yarn.lock,.yarn-integrity,.yarn-metadata.json}"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.icns",
+      "category": "public.app-category.utilities"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "category": "Utility"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Protect"
+    }
+  }
+}

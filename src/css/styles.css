@@ -1,0 +1,395 @@
+:root {
+    --font-color: #fff;
+    --font-family: 'Jetbrains Mono';
+}
+
+*:focus {
+    outline: none !important;
+}
+
+button:not(#mainButton), .website-url, .login-div, .password-div, .comment {
+    transition: transform 0.75s;
+}
+
+button:not(#mainButton):hover, .website-url:hover, .login-div:hover, .password-div:hover, .comment:hover {
+    transform: scale(1.025);
+}
+
+button:not(#mainButton):active, .website-url:active, .login-div:active, .password-div:active, .comment:active {
+    transform: scale(1.0);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+    color: var(--font-color);
+    font-family: var(--font-family);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center;
+    background-attachment: fixed;
+    background-size: contain ;
+    margin: 0;
+}
+
+header {
+    font-size: 24px;
+    text-align: center;
+    background: transparent;
+    border-bottom: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px #333;
+    padding: 10px;
+}
+
+.root {
+    text-align: center;
+    background: #252525;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+#cfg {
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    width: 60%;
+    text-align: center;
+}
+
+.cfgDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.cfgDiv p {
+    font-size: 1.5vh;
+    color: #555;
+}
+
+.filebtn {
+    display: none;
+}
+
+header button {
+    cursor: pointer;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+    padding: 4px;
+    font-size: 16px;
+}
+
+#confbtn {
+    float: left;
+}
+
+#addAccountBtn {
+    margin-right: 10px;
+    float: right;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.account-div {
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+}
+
+.white-line {
+    margin-top: -10px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 100%;
+}
+
+.website-name {
+    font-size: 24px;
+    padding: 10px;
+}
+
+.website-url {
+    margin-top: 10px;
+    display: grid;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+    padding: 3px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+}
+
+.content {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.login-div {
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+    padding: 3px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+}
+
+.show-login-btn {
+    background: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+.copy-login-btn {
+    background: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+.password-div {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.show-password-btn {
+    background: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+.copy-password-btn {
+    background: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+.comment {
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+    padding: 3px;
+    text-align: center;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+}
+
+.white-line-bot {
+    margin-top: 1px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 100%;
+}
+
+.delete-btn {
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+}
+
+.ImportExportBtn {
+    margin-top: 10px;
+    width: 60%;
+    padding: 5px;
+    background: transparent;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    border-radius: 5px;
+}
+
+.ImportExportDg {
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+}
+
+#importDg {
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+}
+
+#exportDg {
+    width: 40%;
+}
+
+.ImportExportDiv {
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+.extImExBtn {
+    cursor: pointer;
+    padding: 5px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+}
+
+#addAccountDg {
+    width: 40%;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+}
+
+#accountAddForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.addAccountInput {
+    text-align: center;
+    width: 60%;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+    padding: 4px;
+}
+
+.addAccountInput::placeholder {
+    text-align: center;
+}
+
+.addAccountInput * {
+    text-align: center;
+}
+
+#addNewAccountBtn {
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 5px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+}
+
+.master-password-modals {
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    gap: 10px;
+}
+
+.mpassword {
+    border-radius: 5px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    padding: 5px;
+}
+
+.psw-modal-btn {
+    cursor: pointer;
+    padding: 5px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+}
+
+.reset-btn {
+    margin-top: -10px;
+    padding: 5px;
+    background: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#showBtn {
+    float: left;
+    margin-left: 10px;
+}
+
+.login, .password {
+  -webkit-text-security: disc;
+}
+
+#blockBtn {
+    float: right;
+}
+
+#blurDg {
+    border-radius: 15px;
+}
