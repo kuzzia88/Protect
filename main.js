@@ -11,7 +11,7 @@ function createWindow() {
     frame: false,
     opacity: 0.98,
     hasShadow: true,
-    icon: path.join(__dirname, 'icon.ico'),
+    icon: path.join(__dirname, 'assets/icon.ico'),
     titleBarStyle: 'hiddenInset',
     webPreferences: {
         enableRemoteModule: true,
